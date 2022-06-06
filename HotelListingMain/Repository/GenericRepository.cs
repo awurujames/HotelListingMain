@@ -57,7 +57,7 @@ namespace HotelListingMain.Repository
             {
                 foreach (var includeProperty in includes)
                 {
-                    query = query.Include(includeProperty); 
+                    query = query.Include(includeProperty);
                 }
             }
 

@@ -25,7 +25,7 @@ namespace HotelListingMain.Repository
             GC.SuppressFinalize(this); 
         }
 
-        public async  Task Save()
+        public async  Task Save()  
         {
             await _context.SaveChangesAsync();
         }

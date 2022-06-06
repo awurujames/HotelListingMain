@@ -21,10 +21,10 @@ namespace HotelListingMain.Controllers
 
         public CountryController(IUnitOfWork unitOfWork, ILogger<CountryController> logger, IMapper mapper)
         {
-            _unitOfWork = unitOfWork;   
-            _logger = logger;   
-            _mapper = mapper;   
-        }
+            _unitOfWork = unitOfWork;
+            _logger = logger;
+            _mapper = mapper;
+        }   
 
         [HttpGet]
         public async Task<IActionResult> GetCountries()
@@ -37,18 +37,18 @@ namespace HotelListingMain.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError (ex, $"Something went wrong in the{nameof(GetCountries)}");
+                _logger.LogError(ex, $"Something went wrong in the{nameof(GetCountries)}");
                 return StatusCode(500, "Internal Server error. please Try Again Later.");
             }
             //return BadRequest();    
         }
 
-        [HttpGet ("{id:int}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetCountry(int id)
         {
             try
             {
-                var country = await _unitOfWork.Countries.Get(u => u.Id == id, new List<string> { "Hotels" }) ;
+                var country = await _unitOfWork.Countries.Get(u => u.Id == id, new List<string> { "Hotels" });
                 var result = _mapper.Map<CountryDTO>(country);
                 return Ok(result);
             }
